@@ -1,0 +1,17 @@
+---
+- name: clone project
+  git: 
+    repo: https://github.com/Trofogol/sample-http-api.git
+    dest: "{{ project_path }}"
+- name: prepare python virtual environment for api
+  pip: 
+    chdir: "{{ project_path }}"
+    requirements: requirements.txt
+    name: uwsgi
+    virtualenv: venv
+    virtualenv_python: python3
+- name: generate config for uWSGI
+  template: 
+    src: uwsgi_config.ini.j2
+    dest: "{{ project_path }}/config.ini"
+...

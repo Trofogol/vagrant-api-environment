@@ -1,0 +1,4 @@
+---
+- name: install pip and pip3
+  import_tasks: install_pips.yml
+...

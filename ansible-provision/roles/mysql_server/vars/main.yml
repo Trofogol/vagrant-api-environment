@@ -1,0 +1,7 @@
+---
+mysql_username: "api"
+mysql_password: "IamPermitt3d"
+mysql_database: "test_corp"
+mysql_port: 3360
+mysql_data: '/var/lib/mysql'
+...

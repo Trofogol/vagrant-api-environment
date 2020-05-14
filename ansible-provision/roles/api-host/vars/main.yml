@@ -1,0 +1,8 @@
+---
+project_path: "~/sample-http-api"
+main_py_script: "api.py"
+ip_address: ""
+port: "9090"
+num_of_processes: "1"
+num_ofthreads: "2"
+...

@@ -1,0 +1,6 @@
+[uwsgi]
+chdir = {{ project_path }}
+wsgi_file = {{ project_path }}/{{ main_py_script }}
+http = {{ ip_address }}:{{ port }}
+processes = {{ num_of_processes }}
+threads = {{ num_of_threads }}

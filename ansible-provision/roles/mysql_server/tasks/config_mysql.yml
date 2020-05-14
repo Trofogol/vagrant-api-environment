@@ -1,0 +1,14 @@
+---
+- name: generate mysql server config
+  template: 
+    src: mysqld.cnf.j2
+    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+    owner: root
+    group: root
+  become: yes
+- name: restart mysql to apply new config
+  service: 
+    name: mysql
+    state: restarted
+  become: yes
+...

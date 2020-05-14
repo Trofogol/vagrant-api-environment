@@ -1,0 +1,14 @@
+---
+- name: install pymysql pip module
+  import_tasks: add_pymysql.yml
+- name: install mysql using apt
+  import_tasks: install_mysql.yml
+- name: configure mysql
+  import_tasks: config_mysql.yml
+- name: import database to mysql
+  import_tasks: import_database.yml
+  notify: 
+    - restart mysql
+- name: create API user and grant him rights for imported database
+  import_tasks: create_api_user.yml
+...
