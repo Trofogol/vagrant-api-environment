@@ -7,11 +7,16 @@
   pip: 
     chdir: "{{ project_path }}"
     requirements: requirements.txt
+    virtualenv: venv
+    virtualenv_python: python3
+- name: install uwsgi in virtual environment
+  pip: 
+    chdir: "{{ project_path }}"
     name: uwsgi
     virtualenv: venv
     virtualenv_python: python3
 - name: generate config for uWSGI
   template: 
     src: uwsgi_config.ini.j2
-    dest: "{{ project_path }}/config.ini"
+    dest: "{{ project_path }}/uwsgi_config.ini"
 ...

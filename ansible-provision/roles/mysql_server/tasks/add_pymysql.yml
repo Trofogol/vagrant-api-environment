@@ -1,7 +1,5 @@
 ---
 - name: install PyMySQL for python
-  #shell: 
-  #  cmd: "python3 -m pip install pymysql"
   pip: 
     name: pymysql
     state: present

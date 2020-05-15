@@ -3,9 +3,6 @@
   become: yes
   apt:
     update_cache: yes
-    name: "{{ item }}"
+    name: build-essential, python3-dev
     state: present
-  with_items:
-    - build-essential
-    - python3-dev
 ...
