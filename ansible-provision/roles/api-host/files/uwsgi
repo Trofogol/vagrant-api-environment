@@ -1,0 +1,42 @@
+#!/bin/bash
+
+### BEGIN INIT INFO
+# Provides:             uwsgi
+# Required-Start:
+# Required-Stop:
+# X-Start-Before:
+# X-Stop-After:
+# Default-Start:        2 3 4 5
+# Default-Stop:         0 1
+# Description:          Runs uwsgi with config from /etc/uwsgi/uwsgi_config.ini
+# Short-Description:    Runs uwsgi
+### END INIT INFO
+
+NAME="uwsgid"
+CONF="/etc/uwsgi/config.ini"
+BIN_FILE="/usr/local/bin/uwsgi"
+
+case "${1}" in
+    start)
+        echo "Starting uwsgi as a daemon"
+        daemon --name "$NAME" -r -o -E -X "$BIN_FILE --emperor $CONF"
+    ;;
+
+    stop)
+        echo "Stopping uwsgi daemon"
+        daemon --name "$NAME" --stop
+    ;;
+
+    status)
+        daemon --name "$NAME" --running
+        echo "uWSGI is running: $?"
+    ;;
+
+    force-reload|restart)
+        daemon --name "$NAME" --restart
+    ;;
+    *)
+        echo "Usage: ${0} {start|stop|restart|force-reload|status}"
+        exit 1
+    ;;
+esac

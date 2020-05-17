@@ -1,6 +1,6 @@
 ---
-- name: install uWSGI prerequisites
-  import_tasks: uwsgi.yml
 - name: install sample-http-api and prepare to run
   import_tasks: install-project.yml
+- name: install uWSGI
+  import_tasks: uwsgi.yml
 ...

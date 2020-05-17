@@ -3,6 +3,37 @@
   become: yes
   apt:
     update_cache: yes
-    name: build-essential, python3-dev
+    name: build-essential, python3-dev, daemon
     state: present
+- name: install uWSGI
+  become: yes
+  pip: 
+    name: uwsgi
+    state: present
+- name: "create /etc/uwsgi"
+  become: yes
+  shell: "mkdir /etc/uwsgi"
+- name: generate config for uWSGI
+  template: 
+    src: uwsgi_config.ini.j2
+    dest: "/etc/uwsgi/config.ini"
+    owner: root
+    group: root
+  become: yes
+- name: install uWSGI init.d script
+  become: yes
+  copy: 
+    src: uwsgi
+    dest: /etc/init.d/uwsgid
+    mode: a+x
+    owner: root
+    group: root
+- name: set up uWSGI as service
+  become: yes
+  shell: "update-rc.d uwsgid defaults"
+- name: launch uWSGI
+  become: yes
+  service: 
+    name: uwsgid
+    state: started
 ...

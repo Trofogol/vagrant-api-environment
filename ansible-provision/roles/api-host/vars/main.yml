@@ -1,8 +1,9 @@
 ---
-project_path: "~/sample-http-api"
+project_path: "/home/vagrant/sample-http-api/"
 main_py_script: "api.py"
 uwsgi_address: ""
 uwsgi_port: "9090"
 num_of_processes: "1"
 num_of_threads: "2"
+application_obj_name: "app"
 ...
