@@ -1,9 +1,11 @@
 # Description
 
 This is a sample set of configs to create virtual machine "api-vm" by Vagrant 
-and provision it by Ansible.
+and provision it by Ansible. It prepares [this project](https://github.com/Trofogol/sample-http-api) to run via uWSGI (launched as daemon).
 
 ## Requirements
+
+> Built on Ubuntu 18
 
 - Python3
 - [Vagrant](https://www.vagrantup.com/intro/getting-started/install.html)
