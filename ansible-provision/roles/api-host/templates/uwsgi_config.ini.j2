@@ -6,3 +6,4 @@ callable = {{ application_obj_name }}
 http = {{ uwsgi_address }}:{{ uwsgi_port }}
 processes = {{ num_of_processes }}
 threads = {{ num_of_threads }}
+stats = {{ uwsgi_address }}:{{ uwsgi_stats_port }}
