@@ -6,7 +6,7 @@
     dest: /usr/local/bin
     owner: root
     group: root
-    mode: preserve
+    mode: go-r
 - name: "copy init.d script for node explorer (name is metricsd)"
   become: yes
   copy: 
