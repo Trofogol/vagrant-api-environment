@@ -13,30 +13,32 @@
 ### END INIT INFO
 
 NAME="uwsgid"
-CONF="/etc/uwsgi/config.ini"
+CONF_FILE="/etc/uwsgid/config.ini"
 BIN_FILE="/usr/local/bin/uwsgi"
+LOG_FILE="/var/log/${NAME}"
 
 case "${1}" in
     start)
         echo "Starting uwsgi as a daemon"
-        daemon --name "$NAME" -r -o -E -X "$BIN_FILE --emperor $CONF"
+        daemon --name "${NAME}" -r -o "${LOG_FILE}" -X "${BIN_FILE} --emperor ${CONF_FILE}"
     ;;
 
     stop)
         echo "Stopping uwsgi daemon"
-        daemon --name "$NAME" --stop
+        daemon --name "${NAME}" --stop
     ;;
 
     status)
-        daemon --name "$NAME" --running
-        echo "uWSGI is running: $?"
+        daemon --name "${NAME}" --running
+        echo "${NAME} is running: $?"
     ;;
 
     force-reload|restart)
-        daemon --name "$NAME" --restart
+        daemon --name "${NAME}" --restart
     ;;
     *)
         echo "Usage: ${0} {start|stop|restart|force-reload|status}"
+	echo "Also it is good way to use (as root) command: service ${NAME} {status | start | stop | restart}"
         exit 1
     ;;
 esac
