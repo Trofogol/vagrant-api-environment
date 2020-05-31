@@ -1,7 +1,13 @@
 # Description
 
 This is a sample set of configs to create virtual machine "api-vm" by Vagrant 
-and provision it by Ansible. It prepares [this project](https://github.com/Trofogol/sample-http-api) to run via uWSGI (launched as daemon).
+and provision it by Ansible. It prepares 
+[this project](https://github.com/Trofogol/sample-http-api) to run via uWSGI 
+(launched as daemon).
+
+Provisioned VM is ready to be monitored by Prometheus (thanks to 
+[Node Exporter](https://github.com/prometheus/node_exporter)). 
+Check port 9100 to make sure it's working.
 
 ## Requirements
 

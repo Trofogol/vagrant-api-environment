@@ -3,4 +3,6 @@
   import_tasks: install-project.yml
 - name: install uWSGI
   import_tasks: uwsgi.yml
+- name: install node exporter (node monitoring by prometheus)
+  import_tasks: metrics.yml
 ...

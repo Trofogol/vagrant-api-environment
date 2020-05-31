@@ -1,0 +1,26 @@
+---
+- name: "install node exporter (put binary file in /usr/local/bin)"
+  become: yes
+  copy: 
+    src: node_exporter
+    dest: /usr/local/bin
+    owner: root
+    group: root
+    mode: go-r,a+x
+- name: "copy init.d script for node explorer (name is metricsd)"
+  become: yes
+  copy: 
+    src: metricsd
+    dest: /etc/init.d/metricsd
+    owner: root
+    group: root
+    mode: a+x
+- name: "initialize metricsd service (make node export system daemon)"
+  become: yes
+  shell: "update-rc.d metricsd defaults"
+- name: "launch metricsd service"
+  become: yes
+  service: 
+    name: metricsd
+    state: started
+...

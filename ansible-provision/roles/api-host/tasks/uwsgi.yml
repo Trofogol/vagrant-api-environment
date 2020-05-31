@@ -10,13 +10,17 @@
   pip: 
     name: uwsgi
     state: present
-- name: "create /etc/uwsgi"
+- name: "create /etc/uwsgid"
   become: yes
-  shell: "mkdir /etc/uwsgi"
+  file: 
+    state: directory
+    path: /etc/uwsgid
+    owner: root
+    group: root
 - name: generate config for uWSGI
   template: 
     src: uwsgi_config.ini.j2
-    dest: "/etc/uwsgi/config.ini"
+    dest: "/etc/uwsgid/config.ini"
     owner: root
     group: root
   become: yes
@@ -31,7 +35,7 @@
 - name: set up uWSGI as service
   become: yes
   shell: "update-rc.d uwsgid defaults"
-- name: launch uWSGI
+- name: launch newly installed uWSGI service
   become: yes
   service: 
     name: uwsgid
